@@ -76,35 +76,19 @@ namespace FinanceApp
                 }
             }
             Console.WriteLine($"Месяцев с положительной прибылью: {positiveProfitMonths}");
+            
+            int[] profitArraySorted = new int[profitArray.Length];
+            Array.Copy(profitArray, profitArraySorted, profitArray.Length);
+            Array.Sort(profitArraySorted);
 
             // Находим заданное количество худших прибылей (не повторяясь)
             for (int i = 0; i < NUMBER_OF_WORST_PROFITS; i++)
             {
-                int worstProfit = profitArray[i]; // Запоминаем базовый профит и далее сверяем последовательно с ним остальные
-
-                for (int j = i + 1; j < profitArray.Length; j++)
+                int worstProfit = profitArraySorted[i]; // Запоминаем базовый профит
+                int k = i + 1;
+                while (i != 0 && Array.IndexOf(worstProfitsArray, worstProfit) != -1)
                 {
-                    int currentProfit = profitArray[j];
-                    if (currentProfit < worstProfit) // Если найден профит меньше базового, то проверяем не добавили ли мы уже такой
-                    {
-                        bool isExists = false;
-                        if (i > 0)
-                        {
-                            for (int k = 0; k < i; k++) // Перебираем массив с худшими профитами worstProfitsArray
-                            {
-                                if (worstProfitsArray[k] == currentProfit) // Нашли такой профит, значит пропускаем
-                                {
-                                    isExists = true;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (!isExists) // Если такой профит в массиве еще не встречается, то запоминаем текущий профит как худший
-                        {
-                            worstProfit = currentProfit;
-                        }
-                    }
+                    worstProfit = profitArraySorted[k++];
                 }
 
                 worstProfitsArray[i] = worstProfit;
