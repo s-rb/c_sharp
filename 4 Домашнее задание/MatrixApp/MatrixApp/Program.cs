@@ -184,16 +184,16 @@ namespace MatrixApp
             }
         }
 
-        private static int[][] GetMultiplied(int[][] srcMatrix, int multyplier)
+        private static int[][] GetMultiplied(int[][] matrix, int multiplier)
         {
-            int[][] res = new int[srcMatrix.Length][];
-            for (int i = 0; i < srcMatrix.Length; i++)
+            int[][] res = new int[matrix.Length][];
+            for (int i = 0; i < matrix.Length; i++)
             {
-                int[] row = new int[srcMatrix[i].Length];
-                for (int j = 0; j < srcMatrix.Length; j++)
+                int[] row = new int[matrix[i].Length];
+                for (int j = 0; j < matrix.Length; j++)
                 {
-                    var element = srcMatrix[i][j];
-                    row[j] = element * multyplier;
+                    var element = matrix[i][j];
+                    row[j] = element * multiplier;
                 }
 
                 res[i] = row;
