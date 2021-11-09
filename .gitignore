@@ -8,6 +8,15 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+*/[Ll]ibrary/
+*/[Uu]serSettings/
+*/[Tt]emp/
+*/[Oo]bj/
+*/[Bb]uild/
+*/[Bb]uilds/
+*/[Ll]ogs/
+*/[Mm]emoryCaptures/
+
 # User-specific files
 *.rsuser
 *.suo
